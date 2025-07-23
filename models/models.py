@@ -47,12 +47,27 @@ class MLP(nn.Module):
 
 
 def train_mlp(
-    X_train, y_train, X_test, y_test, X_102, y_102, device=DEVICE
+    X_train,
+    y_train,
+    X_test,
+    y_test,
+    X_102,
+    y_102,
+    hidden_dim=512,
+    lr=1e-3,
+    epochs=10,
+    device=DEVICE,
 ) -> Tuple[float, float]:
-    """Train a simple MLP on CIFAR-10 and evaluate on test and CIFAR-102 sets."""
-    model = MLP().to(device)
+    """Train a simple MLP with custom hyperparameters and return accuracies."""
+    model = nn.Sequential(
+        nn.Flatten(),
+        nn.Linear(32 * 32 * 3, hidden_dim),
+        nn.ReLU(),
+        nn.Linear(hidden_dim, 10),
+    ).to(device)
+
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
 
     # Convert data to tensors and create DataLoader for batching
     X_train_t = torch.tensor(X_train, dtype=torch.float32)
@@ -65,7 +80,7 @@ def train_mlp(
     X_102_t = torch.tensor(X_102, dtype=torch.float32).to(device)
     y_102_t = torch.tensor(y_102, dtype=torch.long).to(device)
 
-    for epoch in range(10):
+    for epoch in range(epochs):
         model.train()
         for batch_x, batch_y in train_loader:
             batch_x, batch_y = batch_x.to(device), batch_y.to(device)

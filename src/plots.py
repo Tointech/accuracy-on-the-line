@@ -9,8 +9,13 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
+DAY = "22_07"
 RESULTS_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "models", "outputs", "experiment_results.json"
+    os.path.dirname(__file__),
+    "..",
+    "models",
+    "outputs",
+    f"experiment_results_{DAY}.json",
 )
 FIGURE_DIR = os.path.join(os.path.dirname(__file__), "..", "reports", "figures")
 os.makedirs(FIGURE_DIR, exist_ok=True)
@@ -31,8 +36,11 @@ def plot_results():
 
     # Plot
     plt.figure(figsize=(5, 5))
+    model_labels = set()
     for r in results:
-        plt.scatter(r["acc_test"], r["acc_102"], label=r["model"], s=30, alpha=0.6)
+        label = r["model"] if r["model"] not in model_labels else None
+        plt.scatter(r["acc_test"], r["acc_102"], label=label, s=30, alpha=0.6)
+        model_labels.add(r["model"])
 
     x_vals = np.linspace(10, 100, 100)
     plt.plot(x_vals, x_vals, "k--", label="y = x")
@@ -51,7 +59,7 @@ def plot_results():
     plt.legend(fontsize=8, loc="lower right")
     plt.tight_layout()
 
-    fig_path = os.path.join(FIGURE_DIR, "cifar10_vs_cifar102.png")
+    fig_path = os.path.join(FIGURE_DIR, f"cifar10_vs_cifar102_{DAY}.png")
     plt.savefig(fig_path)
     print(f"Figure saved to {fig_path}")
 

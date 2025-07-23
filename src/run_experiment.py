@@ -18,7 +18,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from dataset import load_cifar10, load_cifar102
 from models.models import get_models, train_mlp
 
-DAY = "22_07"
+INDEX = "22_07"
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "models", "outputs")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
@@ -130,7 +130,7 @@ def run_experiment() -> None:
         )
 
     # Save results
-    results_path = os.path.join(RESULTS_DIR, f"experiment_results_{DAY}.json")
+    results_path = os.path.join(RESULTS_DIR, f"experiment_results_{INDEX}.json")
     save_results(results, results_path)
 
 

@@ -14,7 +14,7 @@ RESULTS_PATH = os.path.join(
     "..",
     "models",
     "outputs",
-    "experiment_results.json",
+    "experiment_results_refactor.json",
 )
 FIGURE_DIR = os.path.join(os.path.dirname(__file__), "..", "reports", "figures")
 os.makedirs(FIGURE_DIR, exist_ok=True)
@@ -58,7 +58,7 @@ def plot_results():
     plt.legend(fontsize=8, loc="lower right")
     plt.tight_layout()
 
-    fig_path = os.path.join(FIGURE_DIR, "cifar10_vs_cifar102.png")
+    fig_path = os.path.join(FIGURE_DIR, "cifar10_vs_cifar102_refactor.png")
     plt.savefig(fig_path)
     print(f"Figure saved to {fig_path}")
 

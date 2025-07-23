@@ -9,13 +9,12 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
-INDEX = "22_07"
 RESULTS_PATH = os.path.join(
     os.path.dirname(__file__),
     "..",
     "models",
     "outputs",
-    f"experiment_results_{INDEX}.json",
+    "experiment_results.json",
 )
 FIGURE_DIR = os.path.join(os.path.dirname(__file__), "..", "reports", "figures")
 os.makedirs(FIGURE_DIR, exist_ok=True)
@@ -59,7 +58,7 @@ def plot_results():
     plt.legend(fontsize=8, loc="lower right")
     plt.tight_layout()
 
-    fig_path = os.path.join(FIGURE_DIR, f"cifar10_vs_cifar102_{INDEX}.png")
+    fig_path = os.path.join(FIGURE_DIR, "cifar10_vs_cifar102.png")
     plt.savefig(fig_path)
     print(f"Figure saved to {fig_path}")
 

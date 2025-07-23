@@ -18,11 +18,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from dataset import load_cifar10, load_cifar102
 from models.models import get_models, train_mlp
 
-INDEX = "22_07"
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "models", "outputs")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
-N_RUNS = 5  # Number of repeated runs per model
+N_RUNS = 10  # Number of repeated runs per model
 
 
 def save_results(results: Any, path: str) -> None:
@@ -53,7 +52,7 @@ def run_experiment() -> None:
 
     for run in range(N_RUNS):
         print(f"\n=== Run {run + 1}/{N_RUNS} ===")
-        seed = 42 + run
+        seed = 47 + run
         np.random.seed(seed)
         random.seed(seed)
         torch.manual_seed(seed)
@@ -130,7 +129,7 @@ def run_experiment() -> None:
         )
 
     # Save results
-    results_path = os.path.join(RESULTS_DIR, f"experiment_results_{INDEX}.json")
+    results_path = os.path.join(RESULTS_DIR, "experiment_results.json")
     save_results(results, results_path)
 
 

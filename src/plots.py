@@ -30,7 +30,7 @@ def plot_results():
     r2 = r2_score(y, reg.predict(X))
 
     # Plot
-    plt.figure(figsize=(4, 4))
+    plt.figure(figsize=(5, 5))
     for r in results:
         plt.scatter(r["acc_test"], r["acc_102"], label=r["model"], s=30, alpha=0.6)
 

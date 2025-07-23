@@ -1,0 +1,65 @@
+[
+  {
+    "model": "Random Forest",
+    "run": 0,
+    "acc_test": 46.54,
+    "acc_102": 32.85,
+    "time": 21.354012489318848,
+    "params": {
+      "seed": 42
+    }
+  },
+  {
+    "model": "KNN",
+    "run": 0,
+    "acc_test": 33.98,
+    "acc_102": 24.4,
+    "time": 18.002578258514404,
+    "params": {
+      "seed": 42
+    }
+  },
+  {
+    "model": "Linear Model",
+    "run": 0,
+    "acc_test": 40.63,
+    "acc_102": 29.65,
+    "time": 66.8617959022522,
+    "params": {
+      "seed": 42
+    }
+  },
+  {
+    "model": "AdaBoost",
+    "run": 0,
+    "acc_test": 28.310000000000002,
+    "acc_102": 22.900000000000002,
+    "time": 637.3792719841003,
+    "params": {
+      "seed": 42
+    }
+  },
+  {
+    "model": "Random Features",
+    "run": 0,
+    "acc_test": 9.87,
+    "acc_102": 10.299999999999999,
+    "time": 8.923567771911621,
+    "params": {
+      "seed": 42
+    }
+  },
+  {
+    "model": "Neural Network",
+    "run": 0,
+    "acc_test": 45.44000029563904,
+    "acc_102": 32.95000195503235,
+    "time": 7.231653213500977,
+    "params": {
+      "hidden_dim": 512,
+      "lr": 0.0025206414547605705,
+      "epochs": 10,
+      "seed": 42
+    }
+  }
+]

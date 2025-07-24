@@ -16,8 +16,6 @@ In this project, models are trained on the CIFAR-10 training set and evaluated o
     - [Data Download](#data-download)
   - [Project Structure](#project-structure)
   - [Running Experiments](#running-experiments)
-  - [Plotting Results](#plotting-results)
-  - [Results](#results)
   - [Citation](#citation)
 
 ---
@@ -60,27 +58,14 @@ In this project, models are trained on the CIFAR-10 training set and evaluated o
 To reproduce results:
 
 ```bash
-python src/run_experiment.py
+./main.sh
 ```
 
 This will:
 - Train multiple models (Random Forest, KNN, Logistic Regression, AdaBoost, Random Features, MLP)
 - Evaluate on CIFAR-10 and CIFAR-10.2
 - Save results to `models/outputs/experiment_results.json`
-
-## Plotting Results
-
-To visualize experiment results:
-
-```bash
-python src/plots.py
-```
-
-This will generate plots from the results in `models/outputs/experiment_results.json` and save them to the appropriate location (e.g., `reports/figures/`).
-
-## Results
-
-Results are saved in `models/outputs/experiment_results.json` as a list of runs with accuracy and timing for each model.
+- Generate plots from the results in `models/outputs/experiment_results.json` and save them to the appropriate location (e.g., `reports/figures/`).
 
 ## Citation
 

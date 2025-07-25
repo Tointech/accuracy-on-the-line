@@ -37,7 +37,7 @@ MODEL_PARAM_SPACES = {
     },
     "Linear Model": lambda: {
         "solver": np.random.choice(["lbfgs", "saga", "newton-cg"]),
-        "penalty": np.random.choice(["l2", "none"]),
+        "penalty": np.random.choice(["l2", None]),
         "C": np.random.uniform(0.01, 10.0),
         "max_iter": 1000,
     },

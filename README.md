@@ -5,7 +5,7 @@ This repository reproduces results for the paper ["Accuracy on the Line"](https:
 ## Description
 In this project, models are trained on the CIFAR-10 training set and evaluated on both the CIFAR-10 test set and the CIFAR-10.2 test set. By comparing results across these datasets, we analyze the correlation between accuracy on the original test set and accuracy on a new, closely related dataset. This helps to understand how well test accuracy predicts performance on similar, but unseen, data.
 
-![Plotting results](./reports/figures/cifar10_vs_cifar102.png)
+![Plotting results](./reports/figures/cifar_exp_plot.png)
 
 ## Table of Contents
 - [Accuracy on the Line](#accuracy-on-the-line)

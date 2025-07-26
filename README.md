@@ -58,6 +58,7 @@ In this project, models are trained on the CIFAR-10 training set and evaluated o
 To reproduce results:
 
 ```bash
+chmod +x ./main.sh
 ./main.sh
 ```
 

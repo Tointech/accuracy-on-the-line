@@ -11,7 +11,7 @@ python src/run_experiment.py \
     --output_path $OUT_FILE
 
 # Step 2: Plot the results
-echo "Generating plot..."
+echo "\nGenerating plot..."
 python src/plot.py \
     --results_path "models/outputs/$OUT_FILE" \
     --save_name "$FIG_NAME"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUM_RUNS=20
+NUM_RUNS=40
 OUT_FILE="cifar_exp_results.json"
 FIG_NAME="cifar_exp_plot.png"
 

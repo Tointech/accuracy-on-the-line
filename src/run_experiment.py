@@ -37,7 +37,9 @@ MODEL_PARAM_SPACES = {
     },
     "Linear Model": lambda: {
         "solver": np.random.choice(["lbfgs", "saga", "newton-cg"]),
-        "penalty": np.random.choice(["l2", None]),
+        "penalty": np.random.choice(
+            ["l2", None]
+        ),  # penalty=None will ignore the C and l1_ratio parameters
         "C": np.random.uniform(0.01, 10.0),
         "max_iter": 1000,
     },
@@ -83,7 +85,8 @@ def run_experiment(num_runs: int, results_path: str) -> None:
     X_102, y_102 = load_cifar102()
     results = []
 
-    for run in range(num_runs):
+    start_run = 20
+    for run in range(start_run, num_runs):
         print(f"\n=== Run {run + 1}/{num_runs} ===")
         seed = 47 + run
         np.random.seed(seed)

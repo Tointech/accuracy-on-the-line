@@ -12,6 +12,7 @@ import numpy as np
 from typing import Any
 
 import torch
+import wandb
 
 # Add project root to Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -85,7 +86,7 @@ def run_experiment(num_runs: int, results_path: str) -> None:
     X_102, y_102 = load_cifar102()
     results = []
 
-    start_run = 20
+    start_run = 0
     for run in range(start_run, num_runs):
         print(f"\n=== Run {run + 1}/{num_runs} ===")
         seed = 47 + run
@@ -95,6 +96,8 @@ def run_experiment(num_runs: int, results_path: str) -> None:
         torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
+
+        group_name = f"experiment_run_{run}"
 
         # Sklearn models
         for name in MODEL_PARAM_SPACES:
@@ -107,6 +110,15 @@ def run_experiment(num_runs: int, results_path: str) -> None:
                         if isinstance(vv, (np.integer, np.floating, np.str_)):
                             v[kk] = vv.item() if hasattr(vv, "item") else vv
 
+            # === Init wandb run for this model ===
+            wandb.init(
+                project="cifar-experiments",
+                name=f"{name}_run_{run}",
+                group=group_name,
+                job_type="sklearn",
+                config={**params, "seed": seed, "dataset": ["CIFAR-10", "CIFAR-102"]},
+            )
+
             print(f"\nTraining {name} with params: {params}")
             start_time = time.time()
             model = get_model(name, params)
@@ -117,6 +129,7 @@ def run_experiment(num_runs: int, results_path: str) -> None:
             print(
                 f"{name} - acc_test: {acc_test * 100:.2f}%, acc_102: {acc_102 * 100:.2f}%, time: {duration:.2f}s"
             )
+
             results.append(
                 {
                     "model": name,
@@ -128,10 +141,33 @@ def run_experiment(num_runs: int, results_path: str) -> None:
                 }
             )
 
+            wandb.log(
+                {
+                    "acc_test": acc_test * 100,
+                    "acc_102": acc_102 * 100,
+                    "time_sec": duration,
+                }
+            )
+            wandb.finish()
+
         # Neural Network (MLP) with random hyperparameters
         hidden_dim = np.random.choice([128, 256, 512, 1024])
         lr = np.random.choice([1e-4, 1e-3, 1e-2, 0.05, 0.1])
         epochs = np.random.choice([10, 20, 30, 50])
+
+        wandb.init(
+            project="cifar-experiments",
+            name=f"NeuralNet_run_{run}",
+            group=group_name,
+            job_type="mlp",
+            config={
+                "hidden_dim": hidden_dim,
+                "lr": lr,
+                "epochs": epochs,
+                "seed": seed,
+                "dataset": ["CIFAR-10", "CIFAR-102"],
+            },
+        )
 
         print(
             f"\nTraining Neural Network (hidden_dim={hidden_dim}, lr={lr:.4f}, epochs={epochs})"
@@ -170,6 +206,11 @@ def run_experiment(num_runs: int, results_path: str) -> None:
                 },
             }
         )
+
+        wandb.log(
+            {"acc_test": acc_test * 100, "acc_102": acc_102 * 100, "time_sec": duration}
+        )
+        wandb.finish()
 
     save_results(results, results_path)
 

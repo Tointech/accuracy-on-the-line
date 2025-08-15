@@ -1,0 +1,170 @@
+[
+  {
+    "model": "Random Forest",
+    "run": 0,
+    "acc_test": 48.58,
+    "acc_102": 34.150000000000006,
+    "time": 64.45606637001038,
+    "params": {
+      "n_estimators": 300,
+      "max_depth": null,
+      "max_features": "sqrt",
+      "n_jobs": -1,
+      "seed": 47
+    }
+  },
+  {
+    "model": "KNN",
+    "run": 0,
+    "acc_test": 33.98,
+    "acc_102": 24.6,
+    "time": 23.701478004455566,
+    "params": {
+      "algorithm": "auto",
+      "metric": "minkowski",
+      "n_neighbors": 9,
+      "weights": "uniform",
+      "seed": 47
+    }
+  },
+  {
+    "model": "Linear Model",
+    "run": 0,
+    "acc_test": 37.68,
+    "acc_102": 28.1,
+    "time": 820.8984405994415,
+    "params": {
+      "solver": "newton-cg",
+      "penalty": "l2",
+      "C": 2.9415887283438855,
+      "max_iter": 1000,
+      "seed": 47
+    }
+  },
+  {
+    "model": "AdaBoost",
+    "run": 0,
+    "acc_test": 25.03,
+    "acc_102": 19.6,
+    "time": 1252.6682753562927,
+    "params": {
+      "n_estimators": 200,
+      "learning_rate": 0.1,
+      "seed": 47
+    }
+  },
+  {
+    "model": "Random Features",
+    "run": 0,
+    "acc_test": 10.25,
+    "acc_102": 9.9,
+    "time": 10.162438869476318,
+    "params": {
+      "gamma": 0.25403125124322296,
+      "n_components": 500,
+      "lr_params": {
+        "C": 6.451034761800327,
+        "solver": "lbfgs",
+        "max_iter": 1000
+      },
+      "seed": 47
+    }
+  },
+  {
+    "model": "Neural Network",
+    "run": 0,
+    "acc_test": 9.999999403953552,
+    "acc_102": 10.000000149011612,
+    "time": 12.876378536224365,
+    "params": {
+      "hidden_dim": 128,
+      "lr": 0.1,
+      "epochs": 20,
+      "seed": 47
+    }
+  },
+  {
+    "model": "Random Forest",
+    "run": 1,
+    "acc_test": 45.65,
+    "acc_102": 31.5,
+    "time": 6.111915588378906,
+    "params": {
+      "n_estimators": 100,
+      "max_depth": 30,
+      "max_features": "log2",
+      "n_jobs": -1,
+      "seed": 48
+    }
+  },
+  {
+    "model": "KNN",
+    "run": 1,
+    "acc_test": 35.14,
+    "acc_102": 24.25,
+    "time": 19.842034816741943,
+    "params": {
+      "algorithm": "auto",
+      "metric": "minkowski",
+      "n_neighbors": 11,
+      "weights": "distance",
+      "seed": 48
+    }
+  },
+  {
+    "model": "Linear Model",
+    "run": 1,
+    "acc_test": 37.480000000000004,
+    "acc_102": 27.950000000000003,
+    "time": 680.5375378131866,
+    "params": {
+      "solver": "newton-cg",
+      "penalty": "l2",
+      "C": 9.62884533034616,
+      "max_iter": 1000,
+      "seed": 48
+    }
+  },
+  {
+    "model": "AdaBoost",
+    "run": 1,
+    "acc_test": 17.380000000000003,
+    "acc_102": 13.25,
+    "time": 603.3250412940979,
+    "params": {
+      "n_estimators": 100,
+      "learning_rate": 0.05,
+      "seed": 48
+    }
+  },
+  {
+    "model": "Random Features",
+    "run": 1,
+    "acc_test": 10.2,
+    "acc_102": 9.6,
+    "time": 4.7796101570129395,
+    "params": {
+      "gamma": 0.15465791849225566,
+      "n_components": 250,
+      "lr_params": {
+        "C": 6.960196692088515,
+        "solver": "lbfgs",
+        "max_iter": 1000
+      },
+      "seed": 48
+    }
+  },
+  {
+    "model": "Neural Network",
+    "run": 1,
+    "acc_test": 10.009999573230743,
+    "acc_102": 10.000000149011612,
+    "time": 12.678351163864136,
+    "params": {
+      "hidden_dim": 128,
+      "lr": 0.05,
+      "epochs": 30,
+      "seed": 48
+    }
+  }
+]

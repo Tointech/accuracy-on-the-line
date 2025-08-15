@@ -1,8 +1,8 @@
 #!/bin/bash
 
-NUM_RUNS=40
-OUT_FILE="cifar_exp_results.json"
-FIG_NAME="cifar_exp_plot.png"
+NUM_RUNS=2
+OUT_FILE="test.json"
+FIG_NAME="test.png"
 
 # Step 1: Run the experiment
 echo "Running experiments..."
